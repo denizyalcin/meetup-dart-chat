@@ -1,0 +1,18 @@
+<header class="navbar navbar-da layout horizontal center justified">
+  <div class="horiz">
+    <div id="chat-bubble" class="icon"></div>
+    <a class="navbar-brand">Dart Chat</a>
+  </div>
+
+  <div class="horiz">
+    <div id="login" *ngIf="user == null" class="horiz">
+      <button class="btn btn-success btn-sm" (click)="login()">Login</button>
+    </div>
+
+    <div id="logout" *ngIf="user != null" class="horiz">
+      <img class="icon" [src]="avatar">
+      <div id="user-name">{{user?.username}}</div>
+      <button class="btn btn-success btn-sm" (click)="logout()">Logout</button>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,30 @@
+<app-header></app-header>
+
+<div id="chat" [hidden]="user == null" class="card card-outline-primary flex layout vertical" style="overflow-y: hidden;">
+  <div class="msg-container flex layout vertical" style="overflow-y: auto;" vuScrollDown>
+    <div *ngFor="let message of messages"
+         class="message layout horizontal">
+      <img [src]="getAvatar(message.userId)" class="icon">
+      <div>
+        <div class="name">{{getChatUser(message.userId)?.username}}</div>
+        <div>{{message.text}}</div>
+<!--        <div *ngIf="msg.imageURL != null">
+          <a [href]="msg.imageURL" target="_blank">
+            <img [src]="msg.imageURL" class="message-image">
+          </a>
+        </div>-->
+      </div>
+    </div>
+  </div>
+
+  <div id="input-container" class="card-block layout horizontal center">
+    <input type="text" class="form-control" placeholder="Message..." vuHoldFocus
+           [(ngModel)]="inputText"
+           (keyup.enter)="sendTextMessage()">
+    <button class="btn btn-outline-primary"
+            (click)="sendTextMessage()">Send</button>
+
+<!--    <input #mediaCapture type="file" accept="image/*,capture=camera">
+    <button class="btn btn-outline-primary"><i class="material-icons">image</i></button>
+  </div> -->
+</div>
