@@ -1,0 +1,112 @@
+
+:host >>> {
+  app-header {
+    width: 100%;
+  }
+
+  .chat-window {
+    margin-top: 25px;
+    width: 50%;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+    .chat-window-header{
+      height: 3rem;
+      display: flex;
+      width: 100%;
+      background-color: cornflowerblue;
+      color: white;
+      font-weight: bold;
+      font-size: 1.5rem;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    }
+    .message-container{
+      max-height: 10rem;
+      overflow: scroll;
+      background: whitesmoke;
+      min-height: 3rem;
+      padding: 0.3rem;
+      border-top: 1px solid rgba(120,120,120,.3);
+      border-bottom: 1px solid rgba(120,120,120,.3);
+      & > * {
+        flex-shrink: 0;
+      }
+      & > :first-child {
+        margin-top: auto;
+      }
+      .message {
+        display: flex;
+        align-items: flex-start;
+        margin: .3rem .6rem;
+        background-color: white;
+        border-radius: .3rem;
+        padding: .3rem;
+
+        .user-icon {
+          width: 2rem;
+          height: 2rem;
+          margin: .5rem .3rem;
+        }
+        .message-content{
+          flex-grow: 1;
+          .user-name {
+            padding: .3rem .5rem .1rem;
+            font-weight: bold;
+          }
+          .user-message{
+            padding: .1rem .5rem .3rem;
+            width: 100%;
+            word-wrap: break-word;
+          }
+        }
+      }
+    }
+
+    .message-input-line {
+      background: white;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      material-input{
+        flex-grow: 1;
+        padding: .5rem 1rem;
+        font-size: 1.2rem;
+        color: darkslategray;
+        &::placeholder{
+          color: gray;
+          padding-left: .5rem;
+        }
+        .bottom-section{
+          display: none;
+        }
+      }
+      material-button {
+        height: 2rem;
+        display: flex;
+        justify-content: center;
+        .material-icons{
+          font-size: 1.5rem;
+          color: cornflowerblue;
+        }
+        &:hover .material-icons, &:active .material-icons{
+          color: gray;
+        }
+      }
+    }
+  }
+
+
+  @media (max-width: 1080px) {
+    .chat-window {
+      width: 75%;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .chat-window {
+      width: 95%;
+    }
+  }
+}
+
