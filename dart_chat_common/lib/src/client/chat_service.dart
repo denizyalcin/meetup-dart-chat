@@ -1,6 +1,3 @@
-// Copyright (c) 2017, Stéphane Este-Gracias. All rights reserved. Use of this source code
-// is governed by a BSD-style license that can be found in the LICENSE file.
-
 import 'dart:async';
 
 import 'package:http/http.dart';
@@ -16,12 +13,11 @@ typedef WebSocketChannel WebsocketBuilder(String url);
 
 class ChatService {
   final BaseClient client;
-  final String apiUrl;
-  final String wsUrl;
+  final ClientConfig config;
   final WebsocketBuilder wsBuilder;
   ChatMessageHook onMessage;
 
-  String get _wsEndpoint => "$wsUrl/ws";
+  String get _wsEndpoint => "${config.wsUrl}/ws";
 
   ChatApi _chatApi;
   WebsocketManagerClient _wsClient;
@@ -31,8 +27,8 @@ class ChatService {
   List<ChatMessage> messages = <ChatMessage>[];
   Map<String,ChatUser> users = <String,ChatUser>{};
 
-  ChatService(this.client, this.wsBuilder, this.apiUrl, this.wsUrl, {this.onMessage}) {
-    _chatApi = new ChatApi(client, apiUrl);
+  ChatService(this.client, this.wsBuilder, this.config, {this.onMessage}) {
+    _chatApi = new ChatApi(client, config.apiUrl);
   }
 
   Future<ChatUser> login(String username, String password) async {

@@ -1,6 +1,3 @@
-// Copyright (c) 2017, Stéphane Este-Gracias. All rights reserved. Use of this source code
-// is governed by a BSD-style license that can be found in the LICENSE file.
-
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
@@ -40,8 +37,7 @@ Future<Null> main(List<String> args) async {
   var service = new ChatService(
     new IOClient(),
     (url) => new IOWebSocketChannel.connect(url),
-    config.apiUrl,
-    config.wsUrl,
+    config,
     onMessage: onMessage,
   );
   var user = await service.login(username, password);

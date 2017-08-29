@@ -1,22 +1,28 @@
-<app-header></app-header>
+<div class="chat-window" *ngIf="user == null">
+    <div class="chat-window-header">Dart Chat - Login</div>
+    <material-input label="Username" #textInput [(ngModel)]="username"></material-input>
+    <material-input label="Password" #textInput [(ngModel)]="password"></material-input>
+    <material-button (click)="login()"><material-icon size="medium" icon="send"></material-icon></material-button>
+</div>
 
 <div class="chat-window" *ngIf="user != null">
-  <div class="chat-window-header">Dart Chat</div>
-  <div class="message-container" vuScrollDown>
-    <div *ngFor="let message of messages" class="message">
-      <img [src]="getAvatar(message.userId)" class="user-icon">
-      <div class="message-content">
-        <div class="user-name">{{getChatUser(message.userId)?.username}}</div>
-        <div class="user-message">{{message.text}}</div>
-      </div>
+    <div class="chat-window-header">Dart Chat - {{username}}</div>
+    <div class="message-container" vuScrollDown>
+        <div *ngFor="let message of messages" class="message">
+            <material-icon size="medium" icon="person"></material-icon>
+            <div class="message-content">
+                <div class="user-name">{{getChatUser(message.userId)?.username}}</div>
+                <div class="user-message">{{message.text}}</div>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="message-input-line">
+    <div class="message-input-line">
         <material-input label="Message..."
                         vuHoldFocus
                         #textInput
                         (keyup.enter)="sendTextMessage()"
-        ></material-input>
+        >
+        </material-input>
       <material-button (click)="sendTextMessage()"><material-icon size="medium" icon="send"></material-icon></material-button>
     </div>
 </div>

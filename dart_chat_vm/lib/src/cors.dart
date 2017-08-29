@@ -1,6 +1,3 @@
-// Copyright (c) 2017, Stéphane Este-Gracias. All rights reserved. Use of this source code
-// is governed by a BSD-style license that can be found in the LICENSE file.
-
 import 'package:shelf/shelf.dart';
 
 final Map<String, String> _headers = {'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/html'};
