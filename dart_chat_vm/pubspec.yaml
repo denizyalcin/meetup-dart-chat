@@ -9,7 +9,7 @@ environment:
 
 dependencies:
   dart_chat_common:
-    path: ../common
+    path: ../dart_chat_common
   mongo_dart: ^0.3.0
   random_string: ^0.0.1
   shelf_rest: ^0.3.5

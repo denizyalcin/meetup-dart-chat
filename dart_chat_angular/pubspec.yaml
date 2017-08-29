@@ -12,7 +12,7 @@ dependencies:
   angular_forms: ^0.1.0
   browser: ^0.10.0+2
   dart_chat_common:
-    path: ../common
+    path: ../dart_chat_common
   dart_to_js_script_rewriter: ^1.0.3
 
 dev_dependencies:
