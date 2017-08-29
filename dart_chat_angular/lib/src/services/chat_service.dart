@@ -1,6 +1,3 @@
-// Copyright (c) 2017, Stéphane Este-Gracias. All rights reserved. Use of this source code
-// is governed by a BSD-style license that can be found in the LICENSE file.
-
 import 'dart:async';
 
 import 'package:angular/angular.dart';
@@ -12,6 +9,7 @@ import 'package:dart_chat_common/shared.dart';
 class AngularChatService {
   final ChatService _chatService;
 
+  ClientConfig get config => _chatService?.config;
   ChatUser get user => _chatService?.user;
   List<ChatMessage> get messages => _chatService?.messages;
   Map<String,ChatUser> get users => _chatService?.users;
