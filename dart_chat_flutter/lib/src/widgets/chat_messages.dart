@@ -19,7 +19,7 @@ class _ChatMessagesState extends State<ChatMessages> {
 
   ChatUser get user => _chatService?.user;
   Map<String, ChatUser> get users => _chatService?.users;
-  Iterable<ChatMessage> get messages => _chatService.messages.reversed;
+  List<ChatMessage> get messages => _chatService.messages;
   void sendMessage(String text) => _chatService?.sendMessage(text);
 
   _ChatMessagesState(this._chatService) {
@@ -36,6 +36,9 @@ class _ChatMessagesState extends State<ChatMessages> {
 
   void _handleSubmitted(String text) {
     _textController.clear();
+    setState(() {
+      _isComposing = false;
+    });
     sendMessage(text);
   }
 
@@ -67,8 +70,7 @@ class _ChatMessagesState extends State<ChatMessages> {
       new Flexible(
           child: new ListView.builder(
         padding: new EdgeInsets.all(8.0),
-        reverse: true,
-        itemBuilder: (_, int index) => new ChatMessageListItem(_chatService, messages.elementAt(index)),
+        itemBuilder: (_, int index) => new ChatMessageListItem(_chatService, messages[index]),
         itemCount: messages.length,
       )),
       new Divider(
