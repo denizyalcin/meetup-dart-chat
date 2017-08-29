@@ -22,9 +22,19 @@ class _ChatLoginState extends State<ChatLogin> {
   String password;
   bool sending = false;
 
+  TextEditingController _usernameController;
+  TextEditingController _passwordController;
+
   _ChatLoginState(this._chatService, this._onLogin) {
     username = _chatService.config.username;
     password = _chatService.config.password;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _usernameController = new TextEditingController(text: username);
+    _passwordController = new TextEditingController(text: password);
   }
 
   @override
@@ -37,10 +47,13 @@ class _ChatLoginState extends State<ChatLogin> {
             new TextField(
               decoration: new InputDecoration(labelText: 'Username'),
               onChanged: (String string) => setState(() => username = string),
+              controller: _usernameController,
             ),
             new TextField(
               decoration: new InputDecoration(labelText: 'Password'),
               onChanged: (String string) => setState(() => password = string),
+              controller: _passwordController,
+              obscureText: true,
             ),
             sending
                 ? new CircularProgressIndicator()
