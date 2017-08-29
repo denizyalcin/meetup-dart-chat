@@ -15,6 +15,7 @@ import '../../directives/vu_scroll_down.dart';
   directives: const [
     COMMON_DIRECTIVES,
     formDirectives,
+    MaterialIconComponent,
     materialDirectives,
     VuScrollDown,
     VuHoldFocus,

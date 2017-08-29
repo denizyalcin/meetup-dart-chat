@@ -205,7 +205,9 @@
 
 body.fullbleed {
   margin: 0;
-  height: 100vh; }
+  height: 100vh;
+  display: flex;
+  justify-content: center; }
 
 .scroll {
   -webkit-overflow-scrolling: touch;
